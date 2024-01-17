@@ -14,10 +14,12 @@ GraphQL é uma linguagem de consulta para API
 
 - ID
 
+- Int
+
 
 ### Scalar
 
-A palavra chave **scalar** permite declarar um tipo escalar, ou seja, um tipo que customizado.
+A palavra chave **scalar** permite declarar um tipo escalar, ou seja, um tipo customizado.
 
 
 ```graphql
@@ -82,4 +84,32 @@ const resolvers = {
     },
 }
 
+```
+
+## Create types
+
+```graphql
+
+    type Product {
+        id: ID
+        name: String!
+        description: String
+        price: Float!
+    }
+
+    type Query {
+        product: Product
+    }
+```
+
+Consultando
+
+```graphql
+
+    query {
+        product {
+            id
+            name
+        }
+    }
 ```
