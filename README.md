@@ -84,6 +84,8 @@ const resolvers = {
     },
 }
 
+Caso uma propriedade seja diferente que a especifica na consulta, por exemplo, **usuario_logado** e **usuarioLogado** o GraphQL não irá conseguir mapear a propriedade corretamente. Pra resolver isso é possível criar um resolver pra solucionar o problema. 
+
 ```
 
 ## Create types

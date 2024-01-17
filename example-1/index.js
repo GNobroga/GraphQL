@@ -3,30 +3,32 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 import users from "./data.js";
 
 const typeDefs = `
-    #Entrypoints API
-
-    scalar DateTime
 
     type Query {
-        users: [User]
-        date: DateTime
+        product: Product
     }
-
-    type User {
-        id: ID
-        name: String
+   
+    type Product {
+        name: String!
+        price: Float!
+        discount: Float
+        discountPrice: Float
     }
 `;
 
 
 const resolvers = {
-    Query: {
-       users: () => users,
-       date: () => new Date(),
+    Product: {
+        discountPrice: (parent) => {
+            return parent.price - (parent.price * parent.discount);
+        },
     },
-    User: {
-        id: (user) => user.id,
-        name: (user) => user.name,
+    Query: {
+        product: () => ({
+            name: 'Notebook',
+            price: 500,
+            discount: 0.50
+        }),
     }
 
 };
