@@ -28,3 +28,23 @@ const secondQuery = `
         discountPrice: Float
     }
 `;
+
+
+const secondResolvers = {
+    Product: {
+        discountPrice: (parent) => {
+            if (parent.discount) {
+                return parent.price * (1 - parent.discount);
+            }
+            return parent.price;
+        },
+    },
+    Query: {
+        product: () => ({
+            name: 'Notebook',
+            price: 500,
+            discount: 0.50
+        }),
+    }
+
+};

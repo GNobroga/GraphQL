@@ -19,7 +19,7 @@ GraphQL é uma linguagem de consulta para API
 
 ### Scalar
 
-A palavra chave **scalar** permite declarar um tipo escalar, ou seja, um tipo customizado.
+A palavra chave **scalar** permite declarar um tipo escalar, ou seja, um tipo customizado. A lógica de serializar e deserializar um tipo scalar é a gente que faz. Por padrão ele sempre tenta serializar e deserializar para **String**.
 
 
 ```graphql
