@@ -4,8 +4,12 @@ import users from "./data.js";
 
 const typeDefs = `
     #Entrypoints API
+
+    scalar DateTime
+
     type Query {
         users: [User]
+        date: DateTime
     }
 
     type User {
@@ -18,11 +22,13 @@ const typeDefs = `
 const resolvers = {
     Query: {
        users: () => users,
+       date: () => new Date(),
     },
     User: {
         id: (user) => user.id,
         name: (user) => user.name,
     }
+
 };
 
 const server = new ApolloServer({
