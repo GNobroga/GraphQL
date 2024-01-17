@@ -1,17 +1,27 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from '@apollo/server/standalone';
+import users from "./data.js";
 
 const typeDefs = `
     #Entrypoints API
     type Query {
-        date: String!
+        users: [User]
+    }
+
+    type User {
+        id: ID
+        name: String
     }
 `;
 
 
 const resolvers = {
     Query: {
-        date: () => new Date().toISOString(),
+       users: () => users,
+    },
+    User: {
+        id: (user) => user.id,
+        name: (user) => user.name,
     }
 };
 
