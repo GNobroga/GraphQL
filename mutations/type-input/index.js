@@ -16,7 +16,7 @@ const typeDefs = `
     }
 
     type Mutation {
-        newUser(name: String, email: String): User
+        newUser(data: UserInput): User
         deleteUser(id: Int): Boolean
     }
 
@@ -24,6 +24,11 @@ const typeDefs = `
         id: Int!
         name: String!
         email: String!
+    }
+
+    input UserInput {
+        name: String
+        email: String
     }
    
 
@@ -34,9 +39,9 @@ const resolvers = {
         users: () => users,
     },
     Mutation: {
-        newUser(parent, args) {
-            const user = { id: users.length + 1, name: args.name, email: args.email };
-            users.push(user);
+        newUser(parent, { data }) {
+            const user = { id: users.length + 1, name: data.name, email: data.email };
+            users.push(data);
             return user;
         },
         deleteUser(parent, { id }) {
