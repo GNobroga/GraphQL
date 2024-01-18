@@ -121,3 +121,5 @@ Consultando
 [Fragmentos](/consult-with-fragment/FRAGMENT.md)
 
 [Parâmetros](/consult-with-parameters/PARAMETERS.md)
+
+[Enums](/enums/ENUM.md)

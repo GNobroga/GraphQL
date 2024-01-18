@@ -1,0 +1,24 @@
+type Query {
+    users: [User]!
+}
+
+type Perfil {
+    id: Int!
+    name: String!
+}
+
+type User {
+    id: Int!
+    name: String!
+    email: String!
+    perfil: Perfil!
+    status: Status!
+}
+
+# Criando um enum 
+
+enum Status {
+    ACTIVE,
+    UNACTIVE,
+    BLOCKED
+}
